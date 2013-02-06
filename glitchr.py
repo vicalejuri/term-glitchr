@@ -86,6 +86,9 @@ def render_block():
             return
     elif options.rendermode == 'line':
         if render_count == options.column:
+            if options.breakline:
+                sys.stdout.write('\n' * int(options.breakline))
+
             render_count = 0
             return
     elif options.rendermode == 'random':
@@ -137,6 +140,8 @@ if(__name__ == '__main__'):
 
     parser.add_option( '--bold', type='float', default=0.0, dest='bold', help="Set bold mode on. Choose a threshold from 1(full) to 0(none)")
     parser.add_option( '--blink', type='float', default=0.0, dest='blink', help="Set blink mode on. Choose a threshold from 1(full) to 0(none)" )
+
+    parser.add_option( '--breakline', default=1.0, dest='breakline', help="Break on paragraphs" )
 
 
     (opt,args) = parser.parse_args()
