@@ -4,7 +4,7 @@
 from threading import Timer
 from blessings import Terminal
 
-import sys,signal
+import sys,signal,tty,termios
 from random import choice,uniform,randint
 from time import sleep
 
@@ -57,6 +57,18 @@ options = {'column': 80, 'table': 'maze_commodore' , 'speed': 100 ,
 term = Terminal()
 options['column'] = term.width
 
+# taken from http://code.activestate.com/recipes/134892/
+def getch():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr( fd, termios.TCSADRAIN, old_settings )
+
+    return ch
+
 def main():
     while 1:
         loop()
@@ -65,7 +77,13 @@ def main():
 
 def get_charpixel():
     """ Render a single charpixel """
-    c = choice( CHARTABLES[ options.table ] )
+    if options.table == 'input':
+        c = getch()
+        if c in ['\n','\t']:
+            print(c)
+    else:
+        c = choice( CHARTABLES[ options.table ] )
+
     return c.encode('utf-8')
 
 def render_block():
