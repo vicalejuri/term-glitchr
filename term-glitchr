@@ -51,8 +51,8 @@ mframe = -1
 options = {'column': 80, 'table': 'maze_commodore' , 'speed': 100 ,
            'rendermode': 'char',
             'bold': 1.0, 'blink': 1.0 ,
-            'colors_bg': 'black,',
-            'colors_fg': 'white'}
+            'colors_bg': 'black,magenta,red,green,blue',
+            'colors_fg': 'brigh_white,bright_magenta, bright_red, bright_green, bright_blue'}
 
 term = Terminal()
 options['column'] = term.width
