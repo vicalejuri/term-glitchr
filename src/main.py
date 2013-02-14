@@ -142,6 +142,8 @@ def exit_handler(signum, frame):
 signal.signal( signal.SIGINT, exit_handler)
 
 def main():
+    global options, RENDERMODES,CHARTABLES
+
     parser = OptionParser()
     parser.add_option( '-r','--rendermode', dest='rendermode', default=options['rendermode'],
                                                                choices=RENDERMODES , help="Break mode on every c(char) , w(word) , l(line) , r(random), n(never)?" )

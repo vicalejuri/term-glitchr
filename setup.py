@@ -29,7 +29,7 @@ setup(
     packages=find_packages(exclude=['ez_setup']),
     include_package_data=True,
     entry_points={
-        'console_scripts': ['glitchr = term-glitchr.main:main']
+        'console_scripts': ['glitchr = src.main:main']
     },
     install_requires=['blessings>=1.5,<2.0'],
     keywords=['terminal','tty','utf8','ansii','glitch','art']
