@@ -31,7 +31,7 @@ setup(
     entry_points={
         'console_scripts': ['glitchr = term-glitchr.main:main']
     },
-    install_requires=['blessings>=1.5,<2.0']
+    install_requires=['blessings>=1.5,<2.0'],
     keywords=['terminal','tty','utf8','ansii','glitch','art']
 )
 
