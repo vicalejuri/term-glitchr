@@ -10,49 +10,25 @@ from time import sleep
 
 from optparse import OptionParser
 
+from chartables import CHARTABLES
 from fx import BgFx, FgFx , BlinkFx, BoldFx
 
-def mk_utf8_table( start=0, end=10 ):
-    return [unichr(i) for i in xrange(start,end)]
+COLORS = ['black','red','green','yellow','blue','magenta','cyan','white']
 
-punc = [unichr(0x005F), \
-unichr(0x203F), \
-unichr(0x2040),\
-unichr(0x2054),\
-unichr(0xFE33),\
-unichr(0xFE34),\
-unichr(0xFE4D),\
-unichr(0xFE4E),\
-unichr(0xFE4F),\
-unichr(0xFF3F)]
-
-CHARTABLES = {
-        'maze_commodore': [ u'╲', u'╱' ],
-        'maze_ascii':   [ '\\','/' ],
-        'glitch_dos': [ u'◤', u'◥', u'▌',u'▂', u'▒'],
-        'hangul_jano_full': mk_utf8_table( 0x1100, 0x11FF ),
-        'hangul_jano_esc': mk_utf8_table( 0x1161, 0x119D ),
-        'punctuation_connector': punc,
-        'cannada_aboriginal_full': mk_utf8_table( 0x1401, 0x167F ),
-        'cannada_aboriginal_setas': mk_utf8_table( 0x1401, 0x141B ),
-        'fuck':  mk_utf8_table( 0x1041, 0x2000 ),
-        'input': [' '],
-        'dotted':  [ '+','-', \
-                     '.',',', \
-                     "'",'`', ]
-
-}
+FG_COLORS = ['black','magenta','red','green','blue']
+BG_COLORS = ['bright_white', 'bright_magenta','bright_red','bright_green','bright_blue']
 
 RENDERMODES = ['char','word','line','random','never']
 render_count = 0
 
-
 mframe = -1
-options = {'column': 80, 'table': 'maze_commodore' , 'speed': 100 ,
-           'rendermode': 'char',
+options = {'column': 80,
+            'table': 'maze_commodore' ,
+            'speed': 100 ,
+            'rendermode': 'char',
             'bold': 1.0, 'blink': 1.0 ,
-            'colors_bg': 'black,magenta,red,green,blue',
-            'colors_fg': 'brigh_white,bright_magenta, bright_red, bright_green, bright_blue'}
+            'colors_bg':  FG_COLORS,
+            'colors_fg':  BG_COLORS }
 
 term = Terminal()
 options['column'] = term.width

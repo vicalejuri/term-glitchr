@@ -1,10 +1,14 @@
 from random import uniform,choice
 
 class StrFx():
-    def __init__(self, term,likehood, args=None):
-        self.term = term
-        self.likehood = likehood
-        self.args= args
+    """ Effects """
+    def __init__(self, term, likehood, args=None):
+        """ Likehood is a 0-1.0 threshold.
+            Args is a colors array ('blue','green')
+        """
+        self.term       = term
+        self.likehood   = likehood
+        self.args       = args
 
     def render(self):
         self.r = uniform(0,1)
